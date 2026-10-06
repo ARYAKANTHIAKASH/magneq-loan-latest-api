@@ -180,56 +180,7 @@ output application/json
             </ee:message>
         </ee:transform>
     </flow>
-    <flow name="get:\loans\(loan_type)\(loan_id):magneq-loan-latest-api-config">
-        <ee:transform doc:name="Transform Message">
-            <ee:variables>
-                <ee:set-variable variableName="loan_type">attributes.uriParams.'loan_type'</ee:set-variable>
-                <ee:set-variable variableName="loan_id">attributes.uriParams.'loan_id'</ee:set-variable>
-            </ee:variables>
-        </ee:transform>
-        <ee:transform doc:name="Transform Message">
-            <ee:message>
-                <ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-{
-  customer_id: "1234",
-  loan_id: "PERSONAL_1234",
-  loan_amount: 20000,
-  tenure: 60,
-  interest: 8
-} as Object {encoding: "UTF-8", mediaType: "application/json"}]]></ee:set-payload>
-            </ee:message>
-        </ee:transform>
-    </flow>
-    <flow name="get:\loans\(loan_type):magneq-loan-latest-api-config">
-        <ee:transform doc:name="Transform Message">
-            <ee:variables>
-                <ee:set-variable variableName="loan_type">attributes.uriParams.'loan_type'</ee:set-variable>
-            </ee:variables>
-        </ee:transform>
-        <ee:transform doc:name="Transform Message">
-            <ee:message>
-                <ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-[
-  {
-    loan_id: "PERSONAL_1234",
-    loan_amount: 20000,
-    tenure: 60,
-    interest: 8
-  }, 
-  {
-    loan_id: "PERSONAL_5678",
-    loan_amount: 30000,
-    tenure: 40,
-    interest: 7
-  }
-] as Array {encoding: "UTF-8", mediaType: "application/json"}]]></ee:set-payload>
-            </ee:message>
-        </ee:transform>
-    </flow>
+    
     <flow name="post:\loans:application\json:magneq-loan-latest-api-config">
         <ee:transform doc:name="Transform Message">
             <ee:message>
@@ -243,7 +194,5 @@ output application/json
             </ee:message>
         </ee:transform>
     </flow>
-	<flow name="get:\creditloan:application\json:magneq-loan-latest-api-config" doc:id="67edc951-4e3e-493b-9601-44eaff8111e5" >
-		<set-variable value="#[attributes.uriParams.credId]" doc:name="Set Variable" doc:id="19b77ed5-29b5-4943-9436-22a5761777e0" variableName="creditloanid"/>
-	</flow>
+	
 </mule>
