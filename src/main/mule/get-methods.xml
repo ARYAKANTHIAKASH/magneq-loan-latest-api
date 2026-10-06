@@ -55,6 +55,6 @@ output application/json
         </ee:transform>
     </flow>
     <flow name="get:\creditloan:application\json:magneq-loan-latest-api-config" doc:id="2b4a2a28-cb7b-4fd7-a7ff-6d1101d997f0" >
-		<set-variable value="#[attributes.uriParams.credId]" doc:name="Set Variable" doc:id="d45e92ef-72c2-430f-b5f5-b89528ddbb21" variableName="creditloanid"/>
+		<set-variable value="#[attributes.uriParams.credId]" doc:name="creditloanid" doc:id="d45e92ef-72c2-430f-b5f5-b89528ddbb21" variableName="creditloanid"/>
 	</flow>
 </mule>
